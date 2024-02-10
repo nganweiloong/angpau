@@ -39,7 +39,7 @@ const Angpao: React.FC<AngpaoProps> = ({
             <img
               width="150px"
               height="150px"
-              src={isCat ? catImg : angPaoTng}
+              src={isCat ? "https://placekitten.com/g/150/150" : angPaoTng}
               alt="Angpao reveal"
             />
           </div>

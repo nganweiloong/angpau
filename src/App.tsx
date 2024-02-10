@@ -73,8 +73,9 @@ function App() {
 
   return (
     <>
-      <div className="">
-        <h1 className="text-center text-xl">🐉恭喜发财🐉 </h1>
+      <h1 className="hidden md:block">Meow</h1>
+      <div className="md:hidden">
+        <h1 className="text-center text-xl mt-6">🐉恭喜发财🐉 </h1>
         <h1 className="text-center text-xl mt-[30px]">{message}</h1>
         <div className="flex justify-center items-center mt-5 gap-4">
           {angpaos.angpao.map(pao => (
