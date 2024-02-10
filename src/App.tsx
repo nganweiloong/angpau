@@ -73,14 +73,6 @@ function App() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setAngpao(INIT_ANGPAO);
-          Cookies.set(COOKIE_ALLOW_REDIRECTION, "1");
-        }}
-      >
-        Debugg clear cookie
-      </button>
       <div className="">
         <h1 className="text-center text-xl">🐉恭喜发财🐉 </h1>
         <h1 className="text-center text-xl mt-[30px]">{message}</h1>
