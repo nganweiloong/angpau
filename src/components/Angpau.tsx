@@ -1,5 +1,4 @@
 import angpaoImg from "./angpau.png";
-import catImg from "./cat.jfif";
 import angPaoTng from "./angpauTng.png";
 import { twMerge } from "tailwind-merge";
 
