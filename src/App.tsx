@@ -1,7 +1,6 @@
-import { useState } from "react";
 import Angpao from "./components/Angpau";
 import { useImmer } from "use-immer";
-
+import Cookies from "js-cookie";
 interface Angpao {
   reveal: boolean;
   angpao: {
@@ -9,6 +8,7 @@ interface Angpao {
     hasCat: boolean;
   }[];
 }
+const COOKIES_NAME = "angpao";
 function App() {
   const INIT_ANGPAO: Angpao = {
     reveal: false,
@@ -23,20 +23,20 @@ function App() {
       },
     ],
   };
+  const cookieInit = Cookies.get(COOKIES_NAME)
+    ? JSON.parse(Cookies.get(COOKIES_NAME) || "")
+    : INIT_ANGPAO;
 
-  const [angpaos, setAngpao] = useImmer<Angpao>(INIT_ANGPAO);
-
+  const [angpaos, setAngpao] = useImmer<Angpao>(cookieInit);
   const hasPicked = angpaos.reveal;
-
   const handleClick = () => {
     const result = Math.round(Math.random()); //give 1 or 0
-
     setAngpao(draft => {
       draft.reveal = true;
       draft.angpao[result].hasCat = true;
     });
   };
-
+  Cookies.set(COOKIES_NAME, JSON.stringify(angpaos), { expires: 365 });
   return (
     <>
       <div className="">
@@ -47,7 +47,7 @@ function App() {
             <Angpao
               hasPicked={hasPicked}
               key={pao.id}
-              onClick={handleClick}
+              onClick={!hasPicked ? handleClick : undefined}
               isCat={pao.hasCat}
             />
           ))}
