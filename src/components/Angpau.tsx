@@ -11,11 +11,17 @@ interface AngpaoProps
   // List your props here
   isCat?: boolean;
   hasPicked?: boolean;
+  userSelection?: boolean;
 }
 
-const Angpao: React.FC<AngpaoProps> = ({ isCat, hasPicked, ...props }) => {
+const Angpao: React.FC<AngpaoProps> = ({
+  isCat,
+  hasPicked,
+  userSelection,
+  ...props
+}) => {
   return (
-    <div className="border-red-500 rounded-lg">
+    <div className="relative">
       <div
         className="flip-card bg-transparent w-[150px] h-[150px] rounded-lg overflow-hidden block cursor-pointer"
         {...props}
@@ -30,10 +36,20 @@ const Angpao: React.FC<AngpaoProps> = ({ isCat, hasPicked, ...props }) => {
             <img width="150px" height="150px" src={angpaoImg} alt="Angpao" />
           </div>
           <div className="flip-card-back absolute w-full h-full  ">
-            <img src={isCat ? catImg : angPaoTng} alt="Angpao reveal" />
+            <img
+              width="150px"
+              height="150px"
+              src={isCat ? catImg : angPaoTng}
+              alt="Angpao reveal"
+            />
           </div>
         </div>
       </div>
+      {userSelection && (
+        <p className="absolute left-[50%] -translate-x-1/2 text-red-500 font-bold">
+          Your pick
+        </p>
+      )}
     </div>
   );
 };
