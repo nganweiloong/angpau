@@ -1,7 +1,7 @@
 import angpaoImg from "./angpau.png";
 import angPaoTng from "./angpauTng.png";
 import { twMerge } from "tailwind-merge";
-
+import catt from "./cat.jpg";
 interface AngpaoProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
@@ -38,8 +38,9 @@ const Angpao: React.FC<AngpaoProps> = ({
             <img
               width="150px"
               height="150px"
-              src={isCat ? "https://placekitten.com/g/150/150" : angPaoTng}
+              src={isCat ? catt : angPaoTng}
               alt="Angpao reveal"
+              loading="eager"
             />
           </div>
         </div>
